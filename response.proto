@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+enum Status {
+    Finalized =0;
+    Processing = 1;
+    Failed = 2;
+}
+
+
+message Response{
+    Status status =1;
+    uint64 fsid =2;
+    string signature =3;
+    string message = 4;
+}
