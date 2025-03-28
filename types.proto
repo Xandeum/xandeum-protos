@@ -15,4 +15,5 @@ message Request{
     Opcode op =1;
     bytes pubkey =2;
     bytes data = 3;
+    string signature =4;
 }
