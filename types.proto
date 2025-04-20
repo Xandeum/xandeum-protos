@@ -9,6 +9,8 @@ enum Opcode {
     RM = 5;        
     MKDIR = 6;     
     RMDIR = 7; 
+    RENAME = 8;
+    COPY = 9;
 }
 
 message Request{
