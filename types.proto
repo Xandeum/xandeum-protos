@@ -11,6 +11,12 @@ enum Opcode {
     RMDIR = 7; 
     RENAME = 8;
     COPY = 9;
+
+    // TODO: Refactor RPC opcodes into a distinct type or oneof block
+
+    LIST_DIRS = 8;
+    GET_METADATA = 9;
+    EXISTS = 10;
 }
 
 message Request{
