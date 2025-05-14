@@ -41,11 +41,11 @@ message ListDir {
     repeated DirEntry entries = 1;
 }
 
-// Unified RpcResponse using oneof
-message RpcResponse {
+
+message Response {
     oneof response {
-        Metadata metadata = 1;
+        TxResponse tx = 1;
         Exists exists = 2;
-        ListDir list_dir = 3;
+        Metadata metadata = 3;
     }
 }
