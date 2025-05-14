@@ -47,5 +47,11 @@ message Response {
         TxResponse tx = 1;
         Exists exists = 2;
         Metadata metadata = 3;
+        ListDir list_dir = 4;
     }
+}
+
+message ResponseWrapper {
+    uint64 id = 1;
+    Response response = 2;
 }

@@ -22,6 +22,6 @@ enum Opcode {
 message Request{
     Opcode op =1;
     bytes pubkey =2;
-    bytes data = 3;
+    bytes data = 3; // 8 bytes id 
     string signature =4;
 }
