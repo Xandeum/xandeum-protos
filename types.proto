@@ -11,6 +11,7 @@ enum Opcode {
     RMDIR = 7; 
     RENAME = 8;
     COPY = 9;
+    MOVE = 13;
 
     // TODO: Refactor RPC opcodes into a distinct type or oneof block
 
