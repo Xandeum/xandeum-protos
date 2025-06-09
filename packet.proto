@@ -18,15 +18,13 @@ enum AtlasOperation {
 
 message Meta {
   AtlasOperation op = 1;
-  uint64 page_no = 2;
-  uint32 offset = 3;
-  uint32 length = 4;
-  uint32 chunk_seq = 5;
-  uint32 total_chunks = 6;
+  uint32 chunk_seq = 2;
+  uint32 total_chunks = 3;
 }
 
 message BigBangData {
   FileSystemRecord fs_record=1;
+  Inode inode=2;
 }
 
 message ArmageddonData {
@@ -35,9 +33,5 @@ message ArmageddonData {
 
 message Packet {
   Meta meta = 1;
-  oneof data {
-    bytes raw_data = 2;
-    BigBangData bigbang_data = 3;
-    ArmageddonData armageddon_data = 4;
-  }
+  bytes data=2;
 }
