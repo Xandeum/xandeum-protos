@@ -17,6 +17,7 @@ enum AtlasOperation {
   P_QUORUM = 12;
   P_HEARTBEAT=13;
   P_VERSION=14;
+  P_CACHE=15;
 }
 
 message Meta {
@@ -111,4 +112,8 @@ message peekPayload {
 message Packet {
   Meta meta = 1;
   bytes data=2;
+}
+
+message CachePayload {
+  repeated uint64 pages =1;
 }
