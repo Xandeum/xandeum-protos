@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+message FileSystemRecord {
+    uint64 fs_id = 1;
+    string home_pod_id = 2;
+    string root_inode_id = 3;
+    uint64 xentries_start_page = 4;
+    uint64 pod_mappings_start_page = 5;
+    string owner = 6;
+}
+
+message GlobalCatalogPage {
+    repeated FileSystemRecord filesystems = 1;
+    uint64 next_catalog_page = 2;
+}
+
+message XentryMapping {
+    uint64 inode_no = 1;
+    uint64 start_page_number = 2;
+}
+
+message XentriesPage {
+    repeated XentryMapping mappings = 1;
+}
+
+message PodMapping {
+    uint64 logical_page = 1;
+    string pod_id = 2;
+}
+
+message PodMappingsPage {
+    repeated PodMapping mappings = 1;
+}
+
+message Inode {
+    uint64 inode_no = 1;   
+    uint64 created_timestamp = 4;   
+    uint64 modified_timestamp = 5;
+    uint64 size = 6;
+    bool is_directory = 10; 
+    bool is_system_file = 11;
+    repeated uint64 pages = 9;  
+}
+
+
+message DirectoryEntry {
+    string name = 1;           
+    uint64 inode_no = 2;            
+}
+
+message DirectoryEntryPage {
+    repeated DirectoryEntry entries = 1; 
+}
