@@ -35,6 +35,8 @@ message DirEntry {
     uint64 size = 5;
     uint64 created_at = 6;
     uint64 modified_at = 7;
+    string owner = 8;
+    string co_owner = 9;
 }
 
 message ListDir {
