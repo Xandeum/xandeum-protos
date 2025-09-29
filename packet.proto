@@ -19,6 +19,10 @@ enum AtlasOperation {
   P_VERSION=14;
   P_CACHE=15;
   P_ASSIGN_COOWNER=16;
+  P_SUCCESS_RESPONSE=17;
+  P_ERROR_RESPONSE=18;
+
+  
 }
 
 message Meta {
@@ -121,4 +125,10 @@ message CachePayload {
 
 message assignCoownerPayload{
    repeated Inode inode = 1;
+}
+
+message HeartbeatPayload {
+  string pubkey =1 ;
+  string signature =2;
+  string message =3;
 }
