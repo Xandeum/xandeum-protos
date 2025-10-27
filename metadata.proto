@@ -2,7 +2,7 @@ syntax = "proto3";
 
 message FileSystemRecord {
     uint64 fs_id = 1;
-    string home_pod_id = 2;
+    repeated string home_pod_id = 2;
     string root_inode_id = 3;
     uint64 xentries_start_page = 4;
     uint64 pod_mappings_start_page = 5;
@@ -25,7 +25,7 @@ message XentriesPage {
 
 message PodMapping {
     uint64 logical_page = 1;
-    string pod_id = 2;
+    repeated string pod_id = 2;
 }
 
 message PodMappingsPage {
