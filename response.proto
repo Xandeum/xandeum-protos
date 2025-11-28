@@ -21,6 +21,7 @@ message Metadata {
     uint32 depth = 5;
     uint64 size = 6;
     uint64 created_at = 7;
+    string co_owner = 8;
 }
 
 message Exists {
@@ -35,6 +36,7 @@ message DirEntry {
     uint64 size = 5;
     uint64 created_at = 6;
     uint64 modified_at = 7;
+
 }
 
 message ListDir {
