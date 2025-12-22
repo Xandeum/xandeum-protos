@@ -21,8 +21,7 @@ enum AtlasOperation {
   P_ASSIGN_COOWNER=16;
   P_SUCCESS_RESPONSE=17;
   P_ERROR_RESPONSE=18;
-
-  
+  P_MIGRATE=19;
 }
 
 message Meta {
@@ -131,4 +130,12 @@ message HeartbeatPayload {
   string pubkey =1 ;
   string signature =2;
   string message =3;
+}
+
+message MigrationPayload {
+    GlobalCatalogPage catalog=1;
+    FileSystemRecord filesystems = 2;
+    PodMapping pod_mappings = 3;  
+    Inode pod_mapping_inode = 4;
+    Inode root_inode =5;        
 }
