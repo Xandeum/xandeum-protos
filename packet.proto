@@ -135,7 +135,7 @@ message HeartbeatPayload {
 message MigrationPayload {
     GlobalCatalogPage catalog=1;
     FileSystemRecord filesystems = 2;
-    PodMapping pod_mappings = 3;  
+    PodMappingsPage pod_mappings = 3;  
     Inode pod_mapping_inode = 4;
     Inode root_inode =5;        
 }
