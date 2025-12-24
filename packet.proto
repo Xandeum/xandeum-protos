@@ -34,7 +34,9 @@ message Meta {
 message BigBangData {
   FileSystemRecord fs_record=1;
   repeated Inode inode=2;
-  DirectoryEntryPage directory_entery_page=3;
+  PodMappingsPage pod_mapping_page=3;
+  XentriesPage xentries_page=4;
+  DirectoryEntryPage directory_entery_page=5;
 }
 
 message ArmageddonData {
