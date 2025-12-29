@@ -21,8 +21,7 @@ enum AtlasOperation {
   P_ASSIGN_COOWNER=16;
   P_SUCCESS_RESPONSE=17;
   P_ERROR_RESPONSE=18;
-
-  
+  P_MIGRATE=19;
 }
 
 message Meta {
@@ -35,7 +34,9 @@ message Meta {
 message BigBangData {
   FileSystemRecord fs_record=1;
   repeated Inode inode=2;
-  DirectoryEntryPage directory_entery_page=3;
+  PodMappingsPage pod_mapping_page=3;
+  XentriesPage xentries_page=4;
+  DirectoryEntryPage directory_entery_page=5;
 }
 
 message ArmageddonData {
@@ -131,4 +132,12 @@ message HeartbeatPayload {
   string pubkey =1 ;
   string signature =2;
   string message =3;
+}
+
+message MigrationPayload {
+    GlobalCatalogPage catalog=1;
+    FileSystemRecord filesystems = 2;
+    PodMappingsPage pod_mappings = 3;  
+    Inode pod_mapping_inode = 4;
+    Inode root_inode =5;        
 }
