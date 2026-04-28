@@ -21,6 +21,11 @@ enum Opcode {
     EXISTS = 12;
     LIST_DIRS_OWNER =15;
     FIND = 16;
+
+    BULKUPLOAD = 17;
+    BULKPEEK = 18;
+
+
 }
 
 message Request{

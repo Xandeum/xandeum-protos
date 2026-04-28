@@ -22,6 +22,8 @@ enum AtlasOperation {
   P_SUCCESS_RESPONSE=17;
   P_ERROR_RESPONSE=18;
   P_MIGRATE=19;
+  P_BULK_UPLOAD=21;
+  P_BULK_DOWNLOAD=22;
 }
 
 message Meta {
@@ -141,3 +143,35 @@ message MigrationPayload {
     Inode pod_mapping_inode = 4;
     Inode root_inode =5;        
 }
+
+message BulkPokePayload {
+  Inode parent_file_inode=1; 
+  repeated uint64 page_no=2;
+  Inode pod_mapping_inode=3;
+  PodMapping pods_mapping=4;
+}
+
+
+message BulkUploadPayload {
+  repeated string pods =1;
+  repeated string pod_ip = 2;
+  BulkPokePayload bulk_poke_payload =3;
+  string session_id =4;
+  uint64 file_size_bytes = 5;
+  string file_hash = 6;
+  uint64 start_timestamp = 7;
+  string pubkey =8;
+}
+
+message BulkPeekPayload {
+  repeated uint64 pages=1;
+  repeated uint64 length =2;
+  repeated uint64 offset =3;
+}
+
+message BulkDownloadPayload {
+  BulkPeekPayload payload =1;
+  string session_id =2;
+  string pubkey =3;
+}
+
