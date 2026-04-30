@@ -173,5 +173,6 @@ message BulkDownloadPayload {
   BulkPeekPayload payload =1;
   string session_id =2;
   string pubkey =3;
-}
+  uint64 start_timestamp = 4;
 
+}
