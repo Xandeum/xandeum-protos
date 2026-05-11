@@ -55,6 +55,7 @@ message MkDirPayload {
   XentryMapping xentry_mapping=6;
   Inode pod_mapping_inode=7;
   PodMapping pods_mapping=8;
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 message RmDirPayload{
@@ -65,7 +66,8 @@ message RmDirPayload{
   repeated XentryMapping xentry_mapping=5;
   Inode pod_mapping_inode=6;
   repeated PodMapping pods_mapping=7;
-  
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
+
 }
 
 message createFilePayload {
@@ -76,6 +78,7 @@ message createFilePayload {
   XentryMapping xentry_mapping=6;
   Inode pod_mapping_inode=7;
   PodMapping pods_mapping=8;
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 message RmFilePayload{
@@ -86,6 +89,7 @@ message RmFilePayload{
   repeated XentryMapping xentry_mapping=5;
   Inode pod_mapping_inode=6;
   repeated PodMapping pods_mapping=7;
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 
@@ -97,6 +101,7 @@ message pokePayload {
   uint64 offset =5;
   Inode pod_mapping_inode=6;
   PodMapping pods_mapping=7;
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 message renamePayload{
@@ -109,6 +114,8 @@ message MovePayload{
   DirectoryEntry source_parent_directory=2;
   Inode destination_parent_directory_inode =3;
   DirectoryEntry destination_parent_directory=4;
+  repeated ExtentPage source_parent_inode_extent_pages = 9;  // 2  
+  repeated ExtentPage destination_parent_inode_extent_pages = 10;  // 2  
 }
 
 message peekPayload {
@@ -148,7 +155,8 @@ message BulkPokePayload {
   Inode parent_file_inode=1; 
   repeated uint64 page_no=2;
   Inode pod_mapping_inode=3;
-  PodMapping pods_mapping=4;
+  repeated PodMapping pods_mapping=4;
+  repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 

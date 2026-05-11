@@ -32,6 +32,15 @@ message PodMappingsPage {
     repeated PodMapping mappings = 1;
 }
 
+message Extent {
+    uint64 start_page =1;
+    uint64  page_count =2;
+}
+
+message ExtentPage {  
+    repeated Extent extents =1;
+}
+
 message Inode {
     uint64 inode_no = 1;   
     uint64 created_timestamp = 4;   
@@ -41,6 +50,8 @@ message Inode {
     bool is_system_file = 11;
     repeated uint64 pages = 9; 
     string co_owner = 12; 
+    repeated Extent extent = 13;
+    repeated uint64 extent_pages = 14;  // page no its self 
 }
 
 
