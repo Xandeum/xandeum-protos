@@ -41,7 +41,7 @@ message PodExtentMapping {
 }
 
 message PodMappingsPage {
-    // repeated PodMapping mappings = 1; // legacy per-page
+    repeated PodMapping mappings = 1; // legacy per-page
     repeated PodExtentMapping extent_mappings = 2;
     uint64 next_page = 3;
 }
