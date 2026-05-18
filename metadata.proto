@@ -24,10 +24,10 @@ message XentriesPage {
     uint64 next_page = 2;
 }
 
-//message PodMapping {
-  //  uint64 logical_page = 1;
-  //  repeated string pod_id = 2;
-//}
+message PodMapping {
+  uint64 logical_page = 1;
+  repeated string pod_id = 2;
+}
 
 // message PodMappingsPage {
    // repeated PodMapping mappings = 1;
