@@ -21,15 +21,29 @@ message XentryMapping {
 
 message XentriesPage {
     repeated XentryMapping mappings = 1;
+    uint64 next_page = 2;
 }
 
-message PodMapping {
-    uint64 logical_page = 1;
-    repeated string pod_id = 2;
+//message PodMapping {
+  //  uint64 logical_page = 1;
+  //  repeated string pod_id = 2;
+//}
+
+// message PodMappingsPage {
+   // repeated PodMapping mappings = 1;
+  //  uint64 next_page = 2;
+// }
+
+message PodExtentMapping {
+    uint64 logical_start_page = 1;
+    uint64 page_count = 2;
+    repeated string pod_id = 3;
 }
 
 message PodMappingsPage {
-    repeated PodMapping mappings = 1;
+    // repeated PodMapping mappings = 1; // legacy per-page
+    repeated PodExtentMapping extent_mappings = 2;
+    uint64 next_page = 3;
 }
 
 message Extent {
@@ -38,7 +52,9 @@ message Extent {
 }
 
 message ExtentPage {  
+    uint64 gloabal_page = 3;
     repeated Extent extents =1;
+    uint64 next_page =2;
 }
 
 message Inode {
@@ -48,10 +64,10 @@ message Inode {
     uint64 size = 6;
     bool is_directory = 10; 
     bool is_system_file = 11;
-    repeated uint64 pages = 9; 
+    repeated uint64 pages = 9;  // deprecated 
     string co_owner = 12; 
     repeated Extent extent = 13;
-    repeated uint64 extent_pages = 14;  // page no its self 
+    uint64 next_page = 14;  // page no its self 
 }
 
 
@@ -62,4 +78,5 @@ message DirectoryEntry {
 
 message DirectoryEntryPage {
     repeated DirectoryEntry entries = 1; 
+    uint64 next_page = 2;
 }

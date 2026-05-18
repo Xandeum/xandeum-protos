@@ -22,8 +22,8 @@ enum AtlasOperation {
   P_SUCCESS_RESPONSE=17;
   P_ERROR_RESPONSE=18;
   P_MIGRATE=19;
-  P_BULK_UPLOAD=21;
-  P_BULK_DOWNLOAD=22;
+  P_INGEST=21;
+  P_EGRESS=22;
 }
 
 message Meta {
@@ -53,8 +53,10 @@ message MkDirPayload {
   DirectoryEntry directory_entery_parent=4; 
   Inode xentires_inode=5;
   XentryMapping xentry_mapping=6;
+  uint64 next_new_xenetery_pages = 11;
   Inode pod_mapping_inode=7;
-  PodMapping pods_mapping=8;
+  PodExtentMapping pods_mapping=8;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
@@ -64,20 +66,24 @@ message RmDirPayload{
   DirectoryEntry directory_entery=3;
   Inode xentires_inode=4;
   repeated XentryMapping xentry_mapping=5;
+  uint64 next_new_xenetery_pages = 11;
   Inode pod_mapping_inode=6;
-  repeated PodMapping pods_mapping=7;
+  repeated PodExtentMapping pods_mapping=7;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 
 }
 
 message createFilePayload {
-  Inode new_inode=1;
+  Inode new_inode=1; 
   Inode parent_inode=3;
   DirectoryEntry directory_entery_parent=4; 
   Inode xentires_inode=5;
   XentryMapping xentry_mapping=6;
+  uint64 next_new_xenetery_pages = 11;
   Inode pod_mapping_inode=7;
-  PodMapping pods_mapping=8;
+  PodExtentMapping pods_mapping=8;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
@@ -87,8 +93,10 @@ message RmFilePayload{
   DirectoryEntry directory_entery=3;
   Inode xentires_inode=4;
   repeated XentryMapping xentry_mapping=5;
+  uint64 next_new_xenetery_pages = 11;
   Inode pod_mapping_inode=6;
-  repeated PodMapping pods_mapping=7;
+  repeated PodExtentMapping pods_mapping=7;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
@@ -100,7 +108,8 @@ message pokePayload {
   uint64 length =4;
   uint64 offset =5;
   Inode pod_mapping_inode=6;
-  PodMapping pods_mapping=7;
+  PodExtentMapping pods_mapping=7;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
@@ -155,12 +164,13 @@ message BulkPokePayload {
   Inode parent_file_inode=1; 
   repeated uint64 page_no=2;
   Inode pod_mapping_inode=3;
-  repeated PodMapping pods_mapping=4;
+  repeated PodExtentMapping pods_mapping=4;
+  uint64 next_new_pod_mapping_pages = 10;
   repeated ExtentPage parent_inode_extent_pages = 9;  // 2  
 }
 
 
-message BulkUploadPayload {
+message IngestPayload {
   repeated string pods =1;
   repeated string pod_ip = 2;
   BulkPokePayload bulk_poke_payload =3;
@@ -177,7 +187,7 @@ message BulkPeekPayload {
   repeated uint64 offset =3;
 }
 
-message BulkDownloadPayload {
+message EgressPayload {
   BulkPeekPayload payload =1;
   string session_id =2;
   string pubkey =3;
