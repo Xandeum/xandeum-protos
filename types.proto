@@ -22,8 +22,8 @@ enum Opcode {
     LIST_DIRS_OWNER =15;
     FIND = 16;
 
-    BULKUPLOAD = 17;
-    BULKPEEK = 18;
+    INGEST = 17;
+    EGRESS = 18;
 
 
 }
